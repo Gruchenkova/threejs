@@ -1,0 +1,482 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/sky.css">
+		<link rel="stylesheet" href="css/style.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section class="section1">
+					<a href="https://threejs.org/" style="position: relative; left: -10%;">
+						<svg fill="none" style="width: 40%;" stroke-linecap="square" stroke-miterlimit="10" version="1.1" viewBox="0 0 226.77 226.77" xmlns="http://www.w3.org/2000/svg">
+							<g transform="translate(8.964 4.2527)" fill-rule="evenodd" stroke="#000" stroke-linecap="butt" stroke-linejoin="round" stroke-width="4">
+							 <path d="m63.02 200.61-43.213-174.94 173.23 49.874z"/>
+							 <path d="m106.39 50.612 21.591 87.496-86.567-24.945z"/>
+							 <path d="m84.91 125.03-10.724-43.465 43.008 12.346z"/>
+							 <path d="m63.458 38.153 10.724 43.465-43.008-12.346z"/>
+							 <path d="m149.47 62.93 10.724 43.465-43.008-12.346z"/>
+							 <path d="m84.915 125.06 10.724 43.465-43.008-12.346z"/>
+							</g>
+						</svg>
+						<p id="logoName" style="position: absolute; left: 60%;  bottom: 10%; font-size: 85px;">THREE.JS</p>
+					</a>
+					<p>Created by Gruchenkova Evgenia</p>
+				</section>
+				<section>
+					<h3>Content</h3>
+					<ol>
+						<li><a href="#introduction">Введение в 3D</a></li>
+						<li><a href="#three.js">Основные понятия THREE.JS</a></li>
+						<li><a href="#camera">Типы камеры в Three.js</a></li>
+						<li><a href="#light">Освещение</a></li>
+						<li><a href="#object">Создание объектов на сцене</a></li>
+						<li><a href="#animation">Анимация</a></li>
+					</ol>
+				</section>
+				<section>
+					<section id="introduction">
+						<h3>Введение в 3D</h3>
+						<p>WebGL – это программная библиотека для JavaScript, которая позволяет создавать 3D графику, функционирующую в браузерах. </p>
+						<p>WebGL использует объект canvas.</p>
+						<p>Работа с WebGL — это довольно трудоемкий процесс. В процессе разработки необходимо описать каждую точку, линию, грань и так далее. </p>
+						<p>Для повышения скорости разработки, была разработана библиотека Three.js.</p>
+					</section>
+					<section>
+						<h3>Введение в 3D</h3>
+						<p>Three.js – это библиотека JavaScript, содержащая набор готовых классов для создания и отображения интерактивной 3D графики в WebGL.</p>
+					</section>
+					<section>
+						<p class="codepen" data-height="600" data-slug-hash="KRQbMO" data-user="ashthornton" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+							<span>See the Pen <a href="https://codepen.io/ashthornton/pen/KRQbMO">
+							WebGL Distortion Slider</a> by Ash Thornton (<a href="https://codepen.io/ashthornton">@ashthornton</a>)
+							on <a href="https://codepen.io">CodePen</a>.</span>
+						  </p>
+						  <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+					</section>
+					<section>
+						<p class="codepen" data-height="600" data-default-tab="result" data-slug-hash="EVGrGq" data-user="qkevinto" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+							<span>See the Pen <a href="https://codepen.io/qkevinto/pen/EVGrGq">
+							three.js Earth</a> by Kevin (<a href="https://codepen.io/qkevinto">@qkevinto</a>)
+							on <a href="https://codepen.io">CodePen</a>.</span>
+						  </p>
+						  <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+					</section>
+					<section>
+						<p class="codepen" data-height="600" data-default-tab="result" data-slug-hash="mwGZBP" data-user="Zultan" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+							<span>See the Pen <a href="https://codepen.io/Zultan/pen/mwGZBP">
+							TinyPolyWorld - ThreeJS experiements.</a> by Zultan (<a href="https://codepen.io/Zultan">@Zultan</a>)
+							on <a href="https://codepen.io">CodePen</a>.</span>
+						  </p>
+						  <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+					</section>
+				</section>
+				<section>
+					<section id="three.js">
+						<h3>Подробнее о THREE.JS</h3>
+					</section>
+					<section>
+						<h3>Основные понятия</h3>
+						<ol>
+							<li>Scene</li>
+							<li>Camera</li>
+							<li>Renderer</li>
+						</ol>
+					</section>
+					<!-- <section>
+						<h3>Основные понятия</h3>
+						<ol>
+							<li>Scene - своеобразная платформа, где размещаются все объекты, которые мы создаем</li>
+							<li>Camera - по сути - это “глаз”, который будет направлен на сцену. Камера снимает и отображает объекты, которые расположены на сцене</li>
+							<li>Renderer - визуализатор, который позволяет показывать сцену, снятую камерой.</li>
+						</ol>
+					</section> -->
+					<section>
+						<h3>Renderer</h3>
+						<p>Рендерер — это инструмент, который отображает сцены прямо в вашем браузере.</p>
+						<pre><code data-trim data-noescape data-line-numbers="1|2|3|4"><script type="text/template">
+							const renderer = new THREE.WebGLRenderer({antialias:true});
+							renderer.setSize(WIDTH, HEIGHT);
+							renderer.setClearColor(0xDDDDDD, 1);
+							document.body.appendChild(renderer.domElement);
+							</script></code></pre>
+					</section>
+					<section>
+						<h3>Сцена</h3>
+						<p>Сцена — это место, где все происходит.</p>
+						<pre><code data-trim data-noescape data-line-numbers="1|2"><script type="text/template">
+							const scene = new THREE.Scene();
+							scene.add();
+						</script></code></pre>
+					</section>
+					<section>
+						<h3>Камера</h3>
+						<p></p>
+						<pre><code data-trim data-noescape data-line-numbers="1|2|3"><script type="text/template">
+							const camera = new THREE.PerspectiveCamera(70, WIDTH/HEIGHT);
+							camera.position.z = 50;
+							scene.add(camera);
+						</script></code></pre>
+					</section>
+					
+				</section>
+				<section>
+					<section id="camera">
+						<h3>Типы камеры в Three.js</h3>
+						<ol>
+							<li>Perspective Camera*</li>
+							<li>Stereo Camera</li>
+							<li>Orthographic Camera*</li>
+							<li>Cube Camera</li>
+						</ol>
+						<p>*cамые распространенные</p>
+					</section>
+					<section>
+						<div style="display: flex!important; justify-content: space-around; width: 100%;">
+							<div style="width: 50%;">
+								<h4>Perspective Camera</h4>
+								<p style="font-size: 16px;">Перспективная камера предназначена для имитации того, что видит человеческий глаз. Камера воспринимает все объекты в перспективной проекции, то есть: чем дальше находится объект от нас, тем он кажется меньше.</p>
+							</div>
+							<div  style="width: 50%;">
+								<h4>Orthographic Camera</h4>
+								<p style="font-size: 16px;">В этом режиме проецирования размер объекта в отображаемом изображении остается постоянным, независимо от его расстояния от камеры.
+									Это может быть полезно при отображении 2D-сцен и элементов пользовательского интерфейса.</p>
+							</div>
+						</div>
+						<img style="width: 65%;" src="assets/orthCam.jpeg">
+					</section>
+					<section>
+						<h3>Параметры камеры</h3>
+						<div style="display: flex; align-items: center; justify-content: space-around;">
+							<ul style="font-size: 20px;">
+								<li>FOV(Field Of View) - поле зрения</li>
+								<li>Near - определяет, где начинается фронт усечения</li>
+								<li>Far -определяет, где заканчивается фронт усечения</li> 
+							</ul>
+							<img style="width: 540px;" src="assets/cameraParam.jpg">
+						</div>
+						<p style="font-size: 14px;">Т.е FOV определяет угол, который вы можете видеть вокруг центра камеры. Near и Far - минимальное и максимальное расстояние от камеры, попадающей в рендеринг. Таким образом, очень удаленные точки вообще не будут рендериться, как и точки, находящиеся очень близко.</p>
+					</section>
+				</section>
+				<section>
+					<section id="light">
+						<h3>Освещение</h3>
+					</section>
+					<section>
+						<h3>Примеры освещения</h3>
+						<ol>
+							<li>Ambient Light</li>
+							<li>Directional Light</li>
+							<li>Point Light</li>
+							<li>Spot Light</li>
+						</ol>
+					</section>
+					<section data-auto-animate>
+						<h3>Примеры освещения</h3>
+						<p>Ambient Light — фоновое освещение, которое используется для освещения всех объектов сцены одинаково.
+							Нельзя использовать для создания теней, так как у него нет направления.
+						</p>
+					</section>
+					<section data-auto-animate>
+						<h3>Примеры освещения</h3>
+						<p>Ambient Light — фоновое освещение, которое используется для освещения всех объектов сцены одинаково. Нельзя использовать для создания теней, так как у него нет направления.</p>
+						<img style="width: 35%;" src="assets/ambL.jpeg">
+					</section>
+					<section data-auto-animate>
+						<h3>Примеры освещения</h3>
+						<p>Directional Light — свет, который излучается в определенном направлении. Он может отбрасывать тени, так как направлен на конкретный объект.</p>
+					</section>
+					<section data-auto-animate>
+						<h3>Примеры освещения</h3>
+						<p>Directional Light — свет, который излучается в определенном направлении. Он может отбрасывать тени, так как направлен на конкретный объект.</p>
+						<img style="width: 35%;" src="assets/dirL.jpeg">
+					</section>
+					<section data-auto-animate>
+						<h3>Примеры освещения</h3>
+						<p>Point Light — свет, который излучается из одной точки во всех направлениях.</p>
+					</section>
+					<section data-auto-animate>
+						<h3>Примеры освещения</h3>
+						<p>Point Light — свет, который излучается из одной точки во всех направлениях.</p>
+						<img style="width: 35%;" src="assets/poinL.jpeg">
+					</section>
+					<section data-auto-animate>
+						<h3>Примеры освещения</h3>
+						<p>Spot Light — данный свет излучается из одной точки в одном направлении, вдоль конуса, расширяемого по мере удаления от источника света.</p>
+					</section>
+					<section data-auto-animate>
+						<h3>Примеры освещения</h3>
+						<p>Spot Light — данный свет излучается из одной точки в одном направлении, вдоль конуса, расширяемого по мере удаления от источника света.</p>
+						<img style="width: 35%;" src="assets/spotL.jpeg">
+					</section>
+					<section>
+						<h3>Пример кода</h3>
+						<pre><code data-trim data-noescape data-line-numbers="1|2|3"><script type="text/template">
+							var light = new THREE.PointLight(0xFFFFFF);
+							light.position.set(-10, 15, 50);
+							scene.add(light);
+						</script></code></pre>
+					</section>
+				</section>
+				<section>
+					<section data-auto-animate id="object">
+						<h3>Создание объектов на сцене</h3>
+					</section>
+					<section data-auto-animate>
+						<h3>Создание объектов на сцене</h3>
+						<p>Mesh — это класс, представляющий объекты на основе треугольной полигональной сетки.</p>
+					</section>
+					<section data-auto-animate>
+						<h3>Создание объектов на сцене</h3>
+						<p>Mesh — это класс, представляющий объекты на основе треугольной полигональной сетки.</p>
+						<p>Полигональная сетка — это совокупность вершин, рёбер и граней, которые определяют форму многогранного объекта в трёхмерной компьютерной графике и объёмном моделировании.</p>
+					</section>
+					<section data-auto-animate>
+						<h3>Создание объектов на сцене</h3>
+						<p>Mesh — это класс, представляющий объекты на основе треугольной полигональной сетки.</p>
+						<p>Полигональная сетка — это совокупность вершин, рёбер и граней, которые определяют форму многогранного объекта в трёхмерной компьютерной графике и объёмном моделировании.</p>
+						<img style="width: 35%;" src="assets/Dolphin_triangle_mesh.png">
+					</section>
+					<section data-auto-animate>
+						<h3>Класс Mesh</h3>
+					</section>
+					<section data-auto-animate>
+						<h3>Класс Mesh</h3>
+						<ol> Состоит из 2-ух объектов:
+						</ol>
+					</section>
+					<section data-auto-animate>
+						<h3>Класс Mesh</h3>
+						<ol> Состоит из 2-ух объектов:
+							<li>Geometry — описывает форму (положения вершин, грани, радиус и т.д) </li>
+						</ol>
+					</section>
+					<section data-auto-animate>
+						<h3>Класс Mesh</h3>
+						<ol> Состоит из 2-ух объектов:
+							<li>Geometry — описывает форму (положения вершин, грани, радиус и т.д) </li>
+							<li>Material — описывает внешний вид объектов (цвет, текстура, прозрачность и т.д.)</li>
+						</ol>
+					</section>
+					<section>
+						<h3>Mesh</h3>
+						<p>Чтобы применить материал к геометрии, используется сетка. Это принимает форму и добавляет указанный материал к каждой грани.</p>
+						<pre><code data-trim data-noescape data-line-numbers="1"><script type="text/template">
+							const cube = new THREE.Mesh(geometry, material);
+						</script></code></pre>
+					</section>
+					<section>
+						<h3>Geometry</h3>
+						<img src="assets/geometry.png">
+					</section>
+					<section>
+						<h3>Geometry</h3>
+						<pre><code data-trim data-noescape data-line-numbers="1"><script type="text/template">
+							const boxGeometry = new THREE.BoxGeometry(10, 10, 10);
+						</script></code></pre>
+						<p class="codepen" data-height="300" data-default-tab="result" data-slug-hash="bGajObR" data-user="gruchenkova" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+							<span>See the Pen <a href="https://codepen.io/gruchenkova/pen/bGajObR">
+							BoxGeometry - Three.js</a> by Gruchenkova (<a href="https://codepen.io/gruchenkova">@gruchenkova</a>)
+							on <a href="https://codepen.io">CodePen</a>.</span>
+						  </p>
+						  <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+					</section>
+					<section>
+						<h3>Geometry</h3>
+						<pre><code data-trim data-noescape data-line-numbers="1"><script type="text/template">
+							const geometry = new THREE.SphereGeometry( 20, 64, 64 );
+						</script></code></pre>
+						<p class="codepen" data-height="300" data-default-tab="result" data-slug-hash="abEjPbx" data-user="gruchenkova" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+							<span>See the Pen <a href="https://codepen.io/gruchenkova/pen/abEjPbx">
+							SphereGeometry - Three.js</a> by Gruchenkova (<a href="https://codepen.io/gruchenkova">@gruchenkova</a>)
+							on <a href="https://codepen.io">CodePen</a>.</span>
+						  </p>
+						  <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+					</section>
+					<section>
+						<h3>Geometry</h3>
+						<pre><code data-trim data-noescape data-line-numbers="1"><script type="text/template">
+							const geometry = new THREE.ConeBufferGeometry( 5, 20, 32 );
+						</script></code></pre>
+						<p class="codepen" data-height="300" data-default-tab="result" data-slug-hash="MWgLWJB" data-user="BretCameron" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+							<span>See the Pen <a href="https://codepen.io/BretCameron/pen/MWgLWJB">
+							ConeGeometry - Three.js</a> by Bret Cameron (<a href="https://codepen.io/BretCameron">@BretCameron</a>)
+							on <a href="https://codepen.io">CodePen</a>.</span>
+						  </p>
+						  <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+					</section>
+					<section>
+						<h3>Geometry</h3>
+						<pre><code data-trim data-noescape data-line-numbers="1"><script type="text/template">
+							const geometry = new THREE.TorusKnotGeometry(10, 1.3, 500, 6, 6, 20);
+						</script></code></pre>
+						<p class="codepen" data-height="300" data-default-tab="result" data-slug-hash="RwxBEGG" data-user="gruchenkova" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+							<span>See the Pen <a href="https://codepen.io/gruchenkova/pen/RwxBEGG">
+							TorusKnotGeometry - Three.js</a> by Gruchenkova (<a href="https://codepen.io/gruchenkova">@gruchenkova</a>)
+							on <a href="https://codepen.io">CodePen</a>.</span>
+						  </p>
+						  <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+					</section>
+					<section>
+						<h3>Material</h3>
+						<p>Материал — это то, что покрывает объект, цвета или текстуры на его поверхности.</p>
+						<pre style="margin-bottom: 0;"><code data-trim data-noescape data-line-numbers="1"><script type="text/template">
+							const basicMaterial = new THREE.MeshBasicMaterial({color: 0x0095DD});
+						</script></code></pre>
+						<img src="assets/material.png">
+					</section>
+					<section>
+						<h5>MeshBasicMaterial</h5>
+						<p>Если вы хотите, чтобы ваш объект имел однородный цвет, вы можете использовать MeshBasicMaterial, так как на него не влияет свет.</p>
+						<p class="codepen" data-height="300" data-default-tab="result" data-slug-hash="ZEzwERw" data-user="BretCameron" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+							<span>See the Pen <a href="https://codepen.io/BretCameron/pen/ZEzwERw">
+							MeshBasicMaterial - Three.js</a> by Bret Cameron (<a href="https://codepen.io/BretCameron">@BretCameron</a>)
+							on <a href="https://codepen.io">CodePen</a>.</span>
+						  </p>
+						  <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+					</section>
+					<section>
+						<h5>MeshLambertMaterial</h5>
+						<p>Материал на который воздействует свет, поэтому, чтобы увидеть, что мы делаем, нам нужно добавить немного света в сцену.</p>
+						<p class="codepen" data-height="300" data-default-tab="result" data-slug-hash="OJLdJGz" data-user="BretCameron" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+							<span>See the Pen <a href="https://codepen.io/BretCameron/pen/OJLdJGz">
+							MeshLambertMaterial - Three.js</a> by Bret Cameron (<a href="https://codepen.io/BretCameron">@BretCameron</a>)
+							on <a href="https://codepen.io">CodePen</a>.</span>
+						  </p>
+						  <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+					</section>
+					<section>
+						<h5>MeshPhongMaterial</h5>
+						<p>Позволяет достичь высокого уровня качества изображения</p>
+						<p class="codepen" data-height="300" data-default-tab="result" data-slug-hash="YzKBwwQ" data-user="BretCameron" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+							<span>See the Pen <a href="https://codepen.io/BretCameron/pen/YzKBwwQ">
+							MeshPhongMaterial - Three.js</a> by Bret Cameron (<a href="https://codepen.io/BretCameron">@BretCameron</a>)
+							on <a href="https://codepen.io">CodePen</a>.</span>
+						  </p>
+						  <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+					</section>
+					<section>
+						<h3>Loader</h3>
+						<p>Three.js имеет множество поддерживаемых загрузчиков, охватывающих большинство основных форматов 3D-файлов.</p>
+						<pre><code data-trim data-noescape><script type="text/template">
+							import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+							import model from '../models/sample.gltf';
+							let loader = new GLTFLoader();
+							loader.load(model, function (geometry) {
+							// если модель успешно загружена, нужно добавить её в сцену здесь
+							}, undefined, function (err) {
+							console.error(err);
+							});
+						</script></code></pre>
+					</section>
+					<section>
+						<h3>Loader</h3>
+						<p>Пример</p>
+						<p class="codepen" data-height="503" data-default-tab="result" data-slug-hash="qzvMPX" data-user="sktiwari" style="height: 503px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+							<span>See the Pen <a href="https://codepen.io/sktiwari/pen/qzvMPX">
+							Three.js - Load .GLTF</a> by Shubham Tiwari (<a href="https://codepen.io/sktiwari">@sktiwari</a>)
+							on <a href="https://codepen.io">CodePen</a>.</span>
+						  </p>
+						  <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+					</section>
+					<section>
+						<h3>Текстуры</h3>
+						<p>Текстура — растровое изображение, накладываемое на поверхность полигональной модели для придания ей цвета, окраски или иллюзии рельефа.</p>
+						<img height="300px" src="assets/texture.jpg">
+					</section>
+					<section>
+						<h3>Текстуры</h3>
+						<pre><code data-trim data-noescape><script type="text/template">
+							const loader = new THREE.TextureLoader();
+							const material = new THREE.MeshBasicMaterial({
+								map: loader.load('../resources/images/wall.jpg'),
+							});
+						</script></code></pre>
+					</section>
+					<section data-auto-animate>
+						<h3>Текстуры</h3>
+						<p>Рассеянная текстура - задает основной цвет поверхности</p>
+						<img src="assets/Screenshot_1.jpg">
+					</section>
+					<section data-auto-animate>
+						<h3>Текстуры</h3>
+						<p>Текстура Bump Map - текстура позволяет показать рельеф.</p>
+						<img src="assets/mapMirStructure.jpg">
+					</section>
+					<section>
+						<h3>Текстуры</h3>
+						<p>Текстура Bump Map - текстура позволяет показать рельеф.</p>
+						<img width="300px" src="assets/bampMap.png">
+					</section>
+					<section>
+						<h3>Текстуры</h3>
+						<p class="codepen" data-height="501" data-default-tab="result" data-slug-hash="QWwvVBG" data-user="shadrina" style="height: 501px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+							<span>See the Pen <a href="https://codepen.io/shadrina/pen/QWwvVBG">
+							Earth (three.js)</a> by shadrina (<a href="https://codepen.io/shadrina">@shadrina</a>)
+							on <a href="https://codepen.io">CodePen</a>.</span>
+						  </p>
+						  <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+					</section>
+				</section>
+				<section>
+					<section id="animation">
+						<h3>Анимация</h3>
+							<p class="codepen" data-height="500" data-default-tab="result" data-slug-hash="bGpjZwN" data-user="isladjan" style="height: 500px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+							<span>See the Pen <a href="https://codepen.io/isladjan/pen/bGpjZwN">
+							Space globe - Three.js</a> by isladjan (<a href="https://codepen.io/isladjan">@isladjan</a>)
+							on <a href="https://codepen.io">CodePen</a>.</span>
+							</p>
+							<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+					</section>
+					<section>
+						<h3>Архитектура анимации three.js</h3>
+						<img src="assets/animation.png">
+					</section>
+					<section>
+						<h3>Animation Clips</h3>
+						<img src="assets/Screenshot_4.jpg">
+					</section>
+					<section>
+						<h4>Animation Mixer</h4>
+						<pre><code  data-trim data-noescape><script type="text/template">
+							const mixer = new THREE.AnimationMixer( gltf.scene )
+						</script></code></pre>
+					</section>
+					<section>
+						<h4>Animation Actions</h4>
+						<p>Настройкой AnimationAction можно определять когда конкретный AnimationClip будет воспроизводиться, устанавливаться в паузу, останавливать или запускать анимацию </p>
+					</section>
+				</section>
+				<section>
+					<img src="assets/FotorCreated-47.jpg">
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
