@@ -57,17 +57,17 @@
 						<p>Three.js – это библиотека JavaScript, содержащая набор готовых классов для создания и отображения интерактивной 3D графики в WebGL.</p>
 					</section>
 					<section>
-						<p class="codepen" data-height="600" data-slug-hash="KRQbMO" data-user="ashthornton" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
-							<span>See the Pen <a href="https://codepen.io/ashthornton/pen/KRQbMO">
-							WebGL Distortion Slider</a> by Ash Thornton (<a href="https://codepen.io/ashthornton">@ashthornton</a>)
+						<p class="codepen" data-height="600" data-default-tab="result" data-slug-hash="aqNZxX" data-user="davidkpiano" style="height: 501px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+							<span>See the Pen <a href="https://codepen.io/davidkpiano/pen/aqNZxX">
+							CSS-Only Cube Pack</a> by David Khourshid (<a href="https://codepen.io/davidkpiano">@davidkpiano</a>)
 							on <a href="https://codepen.io">CodePen</a>.</span>
 						  </p>
 						  <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 					</section>
 					<section>
-						<p class="codepen" data-height="600" data-default-tab="result" data-slug-hash="EVGrGq" data-user="qkevinto" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
-							<span>See the Pen <a href="https://codepen.io/qkevinto/pen/EVGrGq">
-							three.js Earth</a> by Kevin (<a href="https://codepen.io/qkevinto">@qkevinto</a>)
+						<p class="codepen" data-height="600" data-default-tab="result" data-slug-hash="oNZVQgm" data-user="mjweaver01" style="height: 500px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+							<span>See the Pen <a href="https://codepen.io/mjweaver01/pen/oNZVQgm">
+							Three.js Earth Scene</a> by Mike Weaver (<a href="https://codepen.io/mjweaver01">@mjweaver01</a>)
 							on <a href="https://codepen.io">CodePen</a>.</span>
 						  </p>
 						  <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
@@ -336,9 +336,56 @@
 						<img src="assets/material.png">
 					</section>
 					<section>
+						<h3>Material</h3>
+						<table style="font-size: 14px;">
+							<thead><tr>
+								<th>Название</th>
+								<th>Описание</th>
+							</tr></thead>
+							<tbody>
+							<tr>
+								<td>MeshBasicMaterial (основной материал сетки)</td>
+								<td>Базовый материал используется для придания геометрии простого цвета или для отображения каркаса геометрии.</td>
+							</tr>
+							<tr>
+								<td>MeshDepthMaterial (Материал глубины сетки)</td>
+								<td>Этот материал использует расстояние от камеры до сетки, чтобы определить, как раскрасить сетку.</td>
+							</tr>
+							<tr>
+								<td>MeshNormalMaterial (Обычный материал сетки)</td>
+								<td>Это простой материал, который вычисляет цвет поверхности объекта на основе вектора нормали.</td>
+							</tr>
+							<tr>
+								<td>MeshFaceMaterial (Материал лицевой стороны сетки)</td>
+								<td>Это контейнер, и для каждой поверхности геометрии можно указать разные материалы.</td>
+							</tr>
+							<tr>
+								<td>MeshLambertMaterial (Материал сетки Ламберта)</td>
+								<td>Это материал, который учитывает эффекты освещения и используется для создания тусклых, неярких объектов.</td>
+							</tr>
+							<tr>
+								<td>MeshPhongMaterial (материал в стиле Фонг)</td>
+								<td>Это материал, который учитывает эффекты освещения и используется для создания ярких предметов.</td>
+							</tr>
+							<tr>
+								<td>ShaderMaterial (материал шейдера)</td>
+								<td>Этот материал позволяет использовать специальные программы шейдеров для непосредственного управления размещением вершин и окраской пикселей.</td>
+							</tr>
+							<tr>
+								<td>LineBasicMaterial (линейный основной материал)</td>
+								<td>Этот материал можно использовать для геометрии THREE.Line для создания цветных линий.</td>
+							</tr>
+							<tr>
+								<td>LineDashMaterial (материал пунктирной линии)</td>
+								<td>Этот материал такой же, как LineBasicMaterial, но позволяет создать штриховой эффект.</td>
+							</tr> 
+						</tbody>
+						</table>
+					</section>
+					<section>
 						<h5>MeshBasicMaterial</h5>
-						<p>Если вы хотите, чтобы ваш объект имел однородный цвет, вы можете использовать MeshBasicMaterial, так как на него не влияет свет.</p>
-						<p class="codepen" data-height="300" data-default-tab="result" data-slug-hash="ZEzwERw" data-user="BretCameron" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+						<p>Базовый материал используется для придания геометрии простого цвета или для отображения каркаса геометрии.</p>
+						<p class="codepen" data-height="400" data-default-tab="result" data-slug-hash="ZEzwERw" data-user="BretCameron" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
 							<span>See the Pen <a href="https://codepen.io/BretCameron/pen/ZEzwERw">
 							MeshBasicMaterial - Three.js</a> by Bret Cameron (<a href="https://codepen.io/BretCameron">@BretCameron</a>)
 							on <a href="https://codepen.io">CodePen</a>.</span>
@@ -347,8 +394,8 @@
 					</section>
 					<section>
 						<h5>MeshLambertMaterial</h5>
-						<p>Материал на который воздействует свет, поэтому, чтобы увидеть, что мы делаем, нам нужно добавить немного света в сцену.</p>
-						<p class="codepen" data-height="300" data-default-tab="result" data-slug-hash="OJLdJGz" data-user="BretCameron" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+						<p>Это материал, который учитывает эффекты освещения и используется для создания тусклых, неярких объектов.</p>
+						<p class="codepen" data-height="400" data-default-tab="result" data-slug-hash="OJLdJGz" data-user="BretCameron" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
 							<span>See the Pen <a href="https://codepen.io/BretCameron/pen/OJLdJGz">
 							MeshLambertMaterial - Three.js</a> by Bret Cameron (<a href="https://codepen.io/BretCameron">@BretCameron</a>)
 							on <a href="https://codepen.io">CodePen</a>.</span>
@@ -357,8 +404,8 @@
 					</section>
 					<section>
 						<h5>MeshPhongMaterial</h5>
-						<p>Позволяет достичь высокого уровня качества изображения</p>
-						<p class="codepen" data-height="300" data-default-tab="result" data-slug-hash="YzKBwwQ" data-user="BretCameron" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+						<p>Это материал, который учитывает эффекты освещения и используется для создания ярких предметов.</p>
+						<p class="codepen" data-height="400" data-default-tab="result" data-slug-hash="YzKBwwQ" data-user="BretCameron" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
 							<span>See the Pen <a href="https://codepen.io/BretCameron/pen/YzKBwwQ">
 							MeshPhongMaterial - Three.js</a> by Bret Cameron (<a href="https://codepen.io/BretCameron">@BretCameron</a>)
 							on <a href="https://codepen.io">CodePen</a>.</span>
